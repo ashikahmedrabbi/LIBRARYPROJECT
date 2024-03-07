@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="mt-5 mx-auto me-6" style="width: 50%; margin: auto">
+  <h3 class="text-center">Your Order Details</h3>
+  {% if borrowed_books %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Transaction Id</th>
+          <th scope="col">Book Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Borrowed Date</th>
+          <th scope="col">Return Book</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in borrowed_books %}
+          <tr>
+            <th scope="row">{{ order.id }}</th>
+            <td>{{ order.book.name }}</td>
+            <td>{{ order.book.borrowing_price }}</td>
+            <td>{{ order.borrowing_date }}</td>
+            <td>
+              
+              <a href="{%url 'returnbook' order.book.id%}" class="btn btn-outline-danger p-2">Return </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <h3 class="text-center">No orders yet.</h3>
+  {% endif %}
+</div>
+{% endblock %}
