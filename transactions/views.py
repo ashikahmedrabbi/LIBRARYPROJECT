@@ -11,7 +11,7 @@ from transactions.forms import (
 )
 from transactions.models import Transaction
 
-def send_email(user,amount,name,email_type,mail_subject,template):
+def send_email(user,amount,email_type,mail_subject,template):
     message = render_to_string(template, {
         'user': user,
         'amount': amount,
