@@ -96,7 +96,7 @@ class BookReturnView(LoginRequiredMixin, View):
         user.account.save(update_fields=['balance'])
         borrow_instance = get_object_or_404(borrow, book__id=id, user=request.user.account)
         borrow_instance.delete()
-        send_email(user,book.borrowing_price,book.name, 'return_book', 'Book Return Message','transactions/email_template.html')
+        send_email(user,book.borrowing_price, 'return_book', 'Book Return Message','transactions/email_template.html')
         return redirect('home') 
     
 

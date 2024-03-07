@@ -15,7 +15,7 @@ def send_email(user,amount,name,email_type,mail_subject,template):
     message = render_to_string(template, {
         'user': user,
         'amount': amount,
-        'name': name,
+        
         'type': email_type,
     })
     from_email = "Boi Gor <mdkaziashikahmed191@gmail.com>"
